@@ -74,10 +74,11 @@ try {
     owner: login,
     repo: "open-sauced-goals",
   });
-  console.log("stagedIssues", stagedIssues);
+  // console.log("stagedIssues", stagedIssues);
   const issues = await octokit.paginate(stagedIssues);
   // filter issues that don't match "owner/name" format
   repoIssues = issues.filter((repoIssue) => repoIssue.user.type !== "Bot");
+  console.log("repoIssues", repoIssues);
 } catch (err) {
   console.log(err);
 }
