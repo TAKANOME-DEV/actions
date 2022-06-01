@@ -77,7 +77,7 @@ try {
   console.log("stagedIssues", stagedIssues);
   const issues = await octokit.paginate(stagedIssues);
   // filter issues that don't match "owner/name" format
-  repoIssues = issues.filter((repoIssue) => !repoIssue.title.match(/\s/) && !repoIssue.title.match(/^[^/]*$/));
+  repoIssues = issues.filter((repoIssue) => repoIssue.user.type !== "Bot");
 } catch (err) {
   console.log(err);
 }
